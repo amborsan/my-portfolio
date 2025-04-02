@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Web Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger-menu menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-form">
+            <h1>Contact Me</h1>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject"><i class="fas fa-heading"></i> Subject:</label>
+                    <input type="text" id="subject" name="subject" placeholder="Message subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment"></i> Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+                </div>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ali Borsan Portfolio. All rights reserved.</p>
+    </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.querySelector('.contact-form form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleFormSubmit);
+    }
+    
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const formValues = Object.fromEntries(formData.entries());
+        
+        // Here you would typically send the data to a server
+        // For demonstration, we'll just show a success message
+        
+        // Create success message
+        const successMessage = document.createElement('div');
+        successMessage.classList.add('success-message');
+        successMessage.style.display = 'block';
+        successMessage.innerHTML = `
+            <p>Thanks for your message, ${formValues.name}! I'll get back to you soon.</p>
+        `;
+        
+        // Clear form
+        contactForm.reset();
+        
+        // Add message after form
+        contactForm.after(successMessage);
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            successMessage.remove();
+        }, 5000);
+    }
+});
+</script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+   
+</body>
+</html>

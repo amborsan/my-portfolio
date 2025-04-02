@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Web Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>My Projects</h1>
+        <div id="projects-container" class="projects-container">
+            <!-- Projects will be dynamically loaded here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Ali Borsan. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    fetchProjects();
+});
+
+async function fetchProjects() {
+    try {
+        const response = await fetch('data/projects.json');
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch projects');
+        }
+        
+        const projects = await response.json();
+        displayProjects(projects);
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        document.getElementById('projects-container').innerHTML = `
+            <div class="error-message">
+                <p>Sorry, we couldn't load the projects at this time.</p>
+            </div>
+        `;
+    }
+}
+
+function displayProjects(projects) {
+    const projectsContainer = document.getElementById('projects-container');
+    
+    if (!projects || projects.length === 0) {
+        projectsContainer.innerHTML = '<p class="no-projects">No projects available at the moment.</p>';
+        return;
+    }
+    
+    const projectsHTML = projects.map(project => `
+        <article class="project-card">
+            <div class="project-image">
+                <img src="${project.image || 'images/project-placeholder.jpg'}" alt="${project.title}">
+            </div>
+            <div class="project-content">
+                <h2>${project.title}</h2>
+                <p class="project-description">${project.description}</p>
+                <div class="project-tech">
+                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+                <div class="project-links">
+                    ${project.liveUrl ? `<a href="${project.liveUrl}" class="btn btn-primary" target="_blank">Live Demo</a>` : ''}
+                    ${project.githubUrl ? `<a href="${project.githubUrl}" class="btn btn-secondary" target="_blank">GitHub</a>` : ''}
+                </div>
+            </div>
+        </article>
+    `).join('');
+    
+    projectsContainer.innerHTML = projectsHTML;
+}
+    </script>
+    <script src="js/projects.js"></script>
+</body>
+</html>

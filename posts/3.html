@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Ali Borsan Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <script src="../js/menu.js" defer></script>
+   <!--  <script src="../js/blog.js" defer></script> -->
+    <style>
+        /* Blog post cards styling */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../projects.html">Projects</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger-menu menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ali Borsan Portfolio. All rights reserved.</p>
+    </footer>
+    <script>
+        // Fetch post data from JSON file
+        async function fetchPostData() {
+            try {
+                const response = await fetch('../data/posts.json');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch post data');
+                }
+                
+                const posts = await response.json();
+                console.log(posts)
+                // Find the JavaScript post (assuming it has 'javascript' in the id)
+                const jsPost = posts.find(post => post.title.toLowerCase().includes('css'));
+                
+                if (jsPost) {
+                    // Update page content with fetched data
+                    // document.querySelector('header h1').textContent = jsPost.title || 'Modern HTML';
+                    
+                    // Create dynamic content section
+                    const contentSection = document.createElement('section');
+                    const formattedContent = jsPost.content.replace(/\n/g, '<br>');
+                    contentSection.innerHTML = `
+                        <h2 class="post-title">${jsPost.title}</h2>
+                        <div class="post-meta">
+                            <p class="post-meta"><strong>Date:</strong> ${jsPost.publishingDate}</p>
+                            ${jsPost.author ? `<p><strong>Author:</strong> ${jsPost.author}</p>` : ''}
+                        </div>
+                        <div class="post-content">
+                            ${formattedContent|| ''}
+                        </div>
+                    `;
+                    
+                    // Insert the dynamic content after the existing content
+                    document.querySelector('main').appendChild(contentSection);
+                    
+                    console.log('Post data loaded successfully');
+                } else {
+                    console.error('JavaScript post not found in the data');
+                }
+            } catch (error) {
+                console.error('Error fetching post data:', error);
+            }
+        }
+        
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', fetchPostData);
+    </script>
+</body>
+</html></html>

@@ -1,0 +1,106 @@
+/* Responsive styles for the web developer portfolio */
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        position: relative; /* Add this for absolute positioning context */
+    }
+    
+    .navbar {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; /* Position it directly below the header */
+        right: 0; /* Align with the left side of the screen */
+        width: 90vw; /* Full viewport width */
+        max-width: 90vw; /* Prevent overflow */
+        flex-direction: column;
+        background-color: #6a1a8fb4;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        margin: 0; /* Remove any margin */
+        padding: 0; /* Remove any padding */
+        transform: translateX(-20px); /* Compensate for header padding */
+    }
+    
+    /* When active, show the nav links */
+    .navbar.active .nav-links,
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        width: 100%;
+        margin: 0; /* Remove any margin */
+    }
+ 
+    .nav-links a {
+        display: block;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /* Show the hamburger menu on mobile */
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 22px;
+        cursor: pointer;
+        z-index: 100;
+        margin-left: auto; /* Push to right side */
+        position: relative; /* Ensure it's positioned properly */
+        right: 0; /* Align to right */
+    }
+    
+    /* Style the hamburger spans */
+    .hamburger-menu span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #f5eded; /* Change to a color that will be visible */
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Hamburger animation when active */
+    .hamburger-menu.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    /* Logo size for mobile */
+    .logo img {
+        max-width: 120px; /* Adjust based on your logo size */
+    }
+}
+
+@media (min-width: 769px) {
+    /* Styles for desktop view */
+    .hamburger-menu {
+        display: none; /* Hide the hamburger menu */
+    }
+
+    .nav-links {
+        display: flex; /* Show the horizontal nav links */
+    }
+}
+
+/* Rest of your carousel styles remain the same */

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer Portfolio</title>
+    <!-- <script src="js/menu.js" defer></script> -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <div class="hamburger-menu menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="carousel-container">
+            <h2>Featured Posts</h2>
+            <div class="carousel post-carousel" id="post-carousel">
+                <!-- Posts will be loaded from posts.json -->
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-control post-prev">❮</button>
+                <button class="carousel-control post-next">❯</button>
+            </div>
+        </section>
+        
+        <section class="carousel-container">
+            <h2>Featured Projects</h2>
+            <div class="carousel project-carousel" id="project-carousel">
+                <!-- Projects will be loaded from projects.json -->
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-control project-prev">❮</button>
+                <button class="carousel-control project-next">❯</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ali Borsan Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/carousel.js"></script>
+    <!-- <script src="js/menu.js"></script> -->
+</body>
+</html>

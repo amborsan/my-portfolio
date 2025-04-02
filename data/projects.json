@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Project One",
+        "description": "This is a brief description of Project One. It showcases the use of HTML, CSS, and JavaScript to create a responsive web application.",
+        "image": "images/projects/html-js.png",
+        "link": "https://github.com/amborsan",
+        "technologies": ["HTML", "CSS", "JavaScript", "Node.js", "MongoDB"],
+        "liveUrl": "https://wpap.de",
+        "githubUrl": "https://github.com/amborsan"
+    },
+    {
+        "id": 2,
+        "title": "Project Two",
+        "description": "This project demonstrates the implementation of a RESTful API using Node.js and Express, along with a front-end built in React.",
+        "image": "images/projects/react.png",
+        "link": "https://github.com/amborsan",
+        "technologies": ["HTML", "CSS", "JavaScript", "Node.js", "MongoDB"],
+        "liveUrl": "https://wpap.de",
+        "githubUrl": "https://github.com/amborsan"
+    },
+    {
+        "id": 3,
+        "title": "Project Three",
+        "description": "An interactive web application that utilizes WebSockets for real-time communication, built with Vanilla JavaScript.",
+        "image": "images/projects/node.png",
+        "link": "https://github.com/amborsan/project-three",
+        "technologies": ["HTML", "CSS", "JavaScript", "Node.js", "MongoDB"],
+        "liveUrl": "https://wpap.de",
+        "githubUrl": "https://github.com/amborsan"
+    },
+    {
+        "id": 4,
+        "title": "E-commerce Website",
+        "description": "A fully responsive e-commerce platform with product search, cart functionality, and secure checkout process.",
+        "image": "images/projects/ecommerce.png",
+        "technologies": ["HTML", "CSS", "JavaScript", "Node.js", "MongoDB"],
+        "liveUrl": "https://wpap.de",
+        "githubUrl": "https://github.com/amborsan"
+      },
+      {
+        "id": 5,
+        "title": "Weather Dashboard",
+        "description": "Real-time weather application showing current conditions and 5-day forecasts using weather API data.",
+        "image": "images/projects/weather.jpg",
+        "technologies": ["HTML", "CSS", "JavaScript", "API Integration"],
+        "liveUrl": "https://wpap.de",
+        "githubUrl": "https://github.com/amborsan"
+      }
+]

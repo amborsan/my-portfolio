@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Web Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="js/menu.js" defer></script>
+    <!-- <script src="js/blog.js" defer></script> -->
+    <style>
+        /* Blog post cards styling */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger-menu menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-posts">
+            <h1>Blog Posts</h1>
+            <div id="posts-container" class="posts-container">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ali Borsan Portfolio. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    fetchBlogPosts();
+});
+
+async function fetchBlogPosts() {
+    try {
+        const response = await fetch('data/posts.json');
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch blog posts');
+        }
+        
+        const posts = await response.json();
+        displayBlogPosts(posts);
+    } catch (error) {
+        console.error('Error loading blog posts:', error);
+        document.getElementById('posts-container').innerHTML = `
+            <div class="error-message">
+                <p>Sorry, we couldn't load the blog posts at this time.</p>
+            </div>
+        `;
+    }
+}
+
+function displayBlogPosts(posts) {
+    const postsContainer = document.getElementById('posts-container');
+    
+    if (posts.length === 0) {
+        postsContainer.innerHTML = '<p>No blog posts available at the moment.</p>';
+        return;
+    }
+    
+    const postsHTML = posts.map(post => `
+        <article class="post-card">
+            <div class="post-content">
+                <h2>${post.title}</h2>
+                <div class="post-meta">
+                    <span class="post-date">${formatDate(post.publishingDate)}</span>
+                    ${post.author ? `<span class="post-author">By ${post.author}</span>` : ''}
+                </div>
+                <p class="post-excerpt">${post.excerpt || post.content.substring(0, 150)}${post.content.length > 150 ? '...' : ''}</p>
+                <a href="posts/${post.id}.html" class="read-more-btn">Read More</a>
+            </div>
+        </article>
+    `).join('');
+    
+    postsContainer.innerHTML = postsHTML;
+}
+
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+}
+    </script>
+</body>
+</html>

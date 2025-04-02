@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Understanding JavaScript Closures",
+      "content": "Closures are a fundamental concept in JavaScript that allow functions to have access to variables from their outer scope even after the outer function has finished executing.",
+      "image": "images/blog/post1.webp",
+      "date": "2023-10-01"
+    },
+    {
+      "id": 2,
+      "title": "A Guide to CSS Flexbox",
+      "content": "Flexbox is a layout model that allows you to design complex layouts with ease. It provides a more efficient way to lay out, align, and distribute space among items in a container.",
+      "image": "images/blog/post2.webp",
+      "date": "2023-10-15"
+    },
+    {
+      "id": 3,
+      "title": "Getting Started with HTML5",
+      "content": "HTML5 is the latest version of the Hypertext Markup Language, the code that describes web pages. It introduces new elements and attributes that enhance the structure and functionality of web content.",
+      "image": "images/blog/post3.webp",
+      "date": "2023-10-20"
+    }
+  ]
+}
