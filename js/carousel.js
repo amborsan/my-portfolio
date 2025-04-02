@@ -27,7 +27,7 @@ function createCarouselItems(data, type) {
                     <a href="blog.html#post-${post.id}" class="btn">Read More</a>
                 </div>
                 <div class="carousel-image">
-                    <img src="${post.image || 'images/placeholder.jpg'}" alt="${post.title || 'Blog post'}">
+                    <img src="${post.image || 'images/posts/default.png'}" alt="${post.title || 'Blog post'}">
                 </div>
             </div>
         `).join('');
